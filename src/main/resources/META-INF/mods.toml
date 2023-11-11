@@ -3,28 +3,28 @@ loaderVersion = "[4,)"
 license = "MIT"
 
 [[mods]]
-modId = "cobblemon_forge_mdk"
+modId = "unimplemented_items"
 version = "1.0.0"
-displayName = "Cobblemon Forge Template Sidemod"
+displayName = "Unimplemented Items"
 description = '''
-
+Adds items that don't exist in Cobblemon yet.
 '''
 
-[[dependencies.cobblemon_forge_mdk]]
+[[dependencies.unimplemented_items]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.20.1]"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.cobblemon_forge_mdk]]
+[[dependencies.unimplemented_items]]
 modId = "forge"
 mandatory = true
 versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.cobblemon_forge_mdk]]
+[[dependencies.unimplemented_items]]
 modId = "cobblemon"
 mandatory = true
 versionRange = "[1.4.0,)"

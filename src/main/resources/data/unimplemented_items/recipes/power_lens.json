@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "unimplemented_items:power_lens"
+    }
+  ],
+  "result": {
+    "item": "cobblemon:power_lens",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "unimplemented_items:power_weight"
+    }
+  ],
+  "result": {
+    "item": "cobblemon:power_weight",
+    "count": 1
+  }
+}
