@@ -1,3 +1,5 @@
+rootProject.name = "cobblemon-unimplemented-items"
+
 pluginManagement {
     repositories {
         maven("https://maven.fabricmc.net/")

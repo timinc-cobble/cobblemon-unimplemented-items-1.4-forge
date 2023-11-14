@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "unimplemented_items:potion_hyper"
+    }
+  ],
+  "result": {
+    "item": "cobblemon:hyper_potion",
+    "count": 1
+  }
+}

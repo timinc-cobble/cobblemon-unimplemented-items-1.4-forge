@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "unimplemented_items:ether"
+    }
+  ],
+  "result": {
+    "item": "cobblemon:ether",
+    "count": 1
+  }
+}
