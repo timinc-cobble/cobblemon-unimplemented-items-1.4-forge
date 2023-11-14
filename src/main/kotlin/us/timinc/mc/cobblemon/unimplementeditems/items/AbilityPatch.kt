@@ -13,10 +13,7 @@ class AbilityPatch : PokemonItem(
     Properties().stacksTo(16)
 ) {
     override fun processInteraction(
-        itemStack: ItemStack,
-        player: Player,
-        target: PokemonEntity,
-        pokemon: Pokemon
+        itemStack: ItemStack, player: Player, target: PokemonEntity, pokemon: Pokemon
     ): InteractionResult {
         if (pokemon.ability.priority == Priority.LOW) {
             player.sendSystemMessage(Component.translatable(ErrorMessages.alreadyHasHiddenAbility))

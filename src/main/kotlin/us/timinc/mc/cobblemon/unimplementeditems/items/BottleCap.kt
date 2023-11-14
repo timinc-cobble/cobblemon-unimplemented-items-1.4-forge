@@ -14,10 +14,7 @@ class BottleCap(private val stat: Stat?) : PokemonItem(
     Properties().stacksTo(16)
 ) {
     override fun processInteraction(
-        itemStack: ItemStack,
-        player: Player,
-        target: PokemonEntity,
-        pokemon: Pokemon
+        itemStack: ItemStack, player: Player, target: PokemonEntity, pokemon: Pokemon
     ): InteractionResult {
         if (stat == null) {
             val nonPerfectIvs = pokemon.ivs.filter { it.value != IVs.MAX_VALUE }

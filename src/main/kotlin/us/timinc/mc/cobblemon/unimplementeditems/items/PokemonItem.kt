@@ -1,5 +1,6 @@
 package us.timinc.mc.cobblemon.unimplementeditems.items
 
+import com.cobblemon.mod.common.api.interaction.PokemonEntityInteraction.Ownership
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.pokemon.Pokemon
 import net.minecraft.network.chat.Component
@@ -10,14 +11,10 @@ import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import us.timinc.mc.cobblemon.unimplementeditems.ErrorMessages
-import us.timinc.mc.cobblemon.unimplementeditems.util.Ownership
 
 abstract class PokemonItem(settings: Properties) : Item(settings) {
     override fun interactLivingEntity(
-        itemStack: ItemStack,
-        player: Player,
-        target: LivingEntity,
-        hand: InteractionHand
+        itemStack: ItemStack, player: Player, target: LivingEntity, hand: InteractionHand
     ): InteractionResult {
         if (player.level().isClientSide) {
             return InteractionResult.PASS
@@ -44,9 +41,6 @@ abstract class PokemonItem(settings: Properties) : Item(settings) {
     }
 
     abstract fun processInteraction(
-        itemStack: ItemStack,
-        player: Player,
-        target: PokemonEntity,
-        pokemon: Pokemon
+        itemStack: ItemStack, player: Player, target: PokemonEntity, pokemon: Pokemon
     ): InteractionResult
 }

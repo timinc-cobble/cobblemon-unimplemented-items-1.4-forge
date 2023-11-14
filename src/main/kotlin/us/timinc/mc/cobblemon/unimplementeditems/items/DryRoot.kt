@@ -12,13 +12,10 @@ class DryRoot : PokemonItem(
     Properties()
 ) {
     override fun processInteraction(
-        itemStack: ItemStack,
-        player: Player,
-        target: PokemonEntity,
-        pokemon: Pokemon
+        itemStack: ItemStack, player: Player, target: PokemonEntity, pokemon: Pokemon
     ): InteractionResult {
         var changedOne = false
-        pokemon.evs.forEach{entry ->
+        pokemon.evs.forEach { entry ->
             if (entry.value > .0) {
                 changedOne = true
                 pokemon.evs[entry.key] = 0

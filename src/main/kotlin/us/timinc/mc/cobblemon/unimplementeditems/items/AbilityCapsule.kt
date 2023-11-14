@@ -11,10 +11,7 @@ import us.timinc.mc.cobblemon.unimplementeditems.ErrorMessages
 
 class AbilityCapsule : PokemonItem(Properties().stacksTo(16)) {
     override fun processInteraction(
-        itemStack: ItemStack,
-        player: Player,
-        target: PokemonEntity,
-        pokemon: Pokemon
+        itemStack: ItemStack, player: Player, target: PokemonEntity, pokemon: Pokemon
     ): InteractionResult {
         if (pokemon.ability.priority == Priority.LOW) {
             player.sendSystemMessage(Component.translatable(ErrorMessages.alreadyHasHiddenAbility))
@@ -22,8 +19,7 @@ class AbilityCapsule : PokemonItem(Properties().stacksTo(16)) {
         }
 
         val form = target.form
-        val potentialAbilityPriorityPool =
-            form.abilities.mapping[Priority.LOWEST]!!
+        val potentialAbilityPriorityPool = form.abilities.mapping[Priority.LOWEST]!!
         if (potentialAbilityPriorityPool.size == 1) {
             player.sendSystemMessage(Component.translatable(ErrorMessages.onlyOneCommonAbility))
             return InteractionResult.FAIL
