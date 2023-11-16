@@ -9,7 +9,6 @@ import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.storage.loot.BuiltInLootTables
 import net.minecraft.world.level.storage.loot.LootPool
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer
 import net.minecraft.world.level.storage.loot.entries.LootTableReference
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent
 import net.minecraftforge.event.LootTableLoadEvent
@@ -27,9 +26,8 @@ object UnimplementedItems {
     const val MOD_ID = "unimplemented_items"
 
     val INJECTED_LOOTS = hashSetOf(
-        BuiltInLootTables.FISHING_TREASURE,
-        Blocks.GRASS.lootTable
-    );
+        BuiltInLootTables.FISHING_TREASURE, Blocks.GRASS.lootTable
+    )
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     object UnimplementedItemsMod {
@@ -63,7 +61,6 @@ object UnimplementedItems {
             }
 
             event.register(ForgeRegistries.Keys.BLOCKS) {
-                println("Registered Unimplemented Blocks")
                 it.register(myResourceLocation("repel"), UnimplementedItemsBlocks.REPEL)
             }
         }
@@ -100,6 +97,10 @@ object UnimplementedItems {
                 event.accept(UnimplementedItemsItems.POWER_BRACER)
                 event.accept(UnimplementedItemsItems.POWER_WEIGHT)
             }
+
+            if (event.tabKey === CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+                event.accept(UnimplementedItemsBlocks.REPEL)
+            }
         }
     }
 
@@ -122,8 +123,8 @@ object UnimplementedItems {
 
         @SubscribeEvent
         fun onLoadLootTable(e: LootTableLoadEvent) {
-            if(!INJECTED_LOOTS.contains(e.name)) {
-                return;
+            if (!INJECTED_LOOTS.contains(e.name)) {
+                return
             }
 
             e.table.addPool(
