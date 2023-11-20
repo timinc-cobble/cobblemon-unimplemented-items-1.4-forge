@@ -6,11 +6,16 @@ import net.minecraft.network.chat.Component
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.crafting.RecipeType
 import us.timinc.mc.cobblemon.unimplementeditems.ErrorMessages
 
 class DryRoot : PokemonItem(
     Properties()
 ) {
+    override fun getBurnTime(itemStack: ItemStack?, recipeType: RecipeType<*>?): Int {
+        return 100
+    }
+
     override fun processInteraction(
         itemStack: ItemStack, player: Player, target: PokemonEntity, pokemon: Pokemon
     ): InteractionResult {

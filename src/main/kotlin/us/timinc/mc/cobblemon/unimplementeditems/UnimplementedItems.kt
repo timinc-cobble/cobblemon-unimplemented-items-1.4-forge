@@ -7,6 +7,7 @@ import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.ComposterBlock
 import net.minecraft.world.level.storage.loot.BuiltInLootTables
 import net.minecraft.world.level.storage.loot.LootPool
 import net.minecraft.world.level.storage.loot.entries.LootTableReference
@@ -58,6 +59,8 @@ object UnimplementedItems {
                 it.register(myResourceLocation("power_anklet"), UnimplementedItemsItems.POWER_ANKLET)
 
                 it.register(myResourceLocation("repel"), BlockItem(UnimplementedItemsBlocks.REPEL, Item.Properties()))
+
+                ComposterBlock.COMPOSTABLES.put(UnimplementedItemsItems.DRY_ROOT, 0.3F)
             }
 
             event.register(ForgeRegistries.Keys.BLOCKS) {
