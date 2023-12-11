@@ -8,6 +8,7 @@ import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 import us.timinc.mc.cobblemon.unimplementeditems.ErrorMessages
+import us.timinc.mc.cobblemon.unimplementeditems.UnimplementedItems
 
 class AbilityPatch : PokemonItem(
     Properties().stacksTo(16)
@@ -15,7 +16,10 @@ class AbilityPatch : PokemonItem(
     override fun processInteraction(
         itemStack: ItemStack, player: Player, target: PokemonEntity, pokemon: Pokemon
     ): InteractionResult {
-        if (pokemon.ability.priority == Priority.LOW) {
+        val preGen9 = !UnimplementedItems.config.abilityPatchGen9
+
+        val hasHidden = pokemon.ability.priority == Priority.LOW
+        if (hasHidden && preGen9) {
             player.sendSystemMessage(Component.translatable(ErrorMessages.alreadyHasHiddenAbility))
             return InteractionResult.FAIL
         }
@@ -27,7 +31,8 @@ class AbilityPatch : PokemonItem(
             return InteractionResult.FAIL
         }
 
-        val potentialAbility = potentialAbilityMapping[0]
+        val targetAbilityMapping = tForm.abilities.mapping[if (hasHidden) Priority.LOWEST else Priority.LOW]
+        val potentialAbility = targetAbilityMapping?.get(0) ?: return InteractionResult.FAIL
         val newAbilityBuilder = potentialAbility.template.builder
         val newAbility = newAbilityBuilder.invoke(potentialAbility.template, false)
         newAbility.index = 0
