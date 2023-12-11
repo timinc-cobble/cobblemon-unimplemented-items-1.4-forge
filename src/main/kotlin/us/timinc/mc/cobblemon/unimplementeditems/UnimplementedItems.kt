@@ -19,12 +19,14 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegisterEvent
 import us.timinc.mc.cobblemon.unimplementeditems.blocks.UnimplementedItemsBlocks
+import us.timinc.mc.cobblemon.unimplementeditems.config.BaseConfig
 import us.timinc.mc.cobblemon.unimplementeditems.items.PostBattleItem
 import us.timinc.mc.cobblemon.unimplementeditems.items.UnimplementedItemsItems
 
 @Mod(UnimplementedItems.MOD_ID)
 object UnimplementedItems {
     const val MOD_ID = "unimplemented_items"
+    var config: BaseConfig = BaseConfig.Builder.load()
 
     val INJECTED_LOOTS = hashSetOf(
         BuiltInLootTables.FISHING_TREASURE, Blocks.GRASS.lootTable
