@@ -4,7 +4,7 @@ license = "MIT"
 
 [[mods]]
 modId = "unimplemented_items"
-version = "1.4-forge-1.1.0"
+version = "1.4-forge-1.2.0"
 displayName = "Unimplemented Items"
 description = '''
 Adds items that don't exist in Cobblemon yet.
