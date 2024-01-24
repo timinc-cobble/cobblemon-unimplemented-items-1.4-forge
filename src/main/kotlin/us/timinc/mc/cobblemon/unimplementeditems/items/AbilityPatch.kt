@@ -26,17 +26,18 @@ class AbilityPatch : PokemonItem(
 
         val tForm = pokemon.form
         val potentialAbilityMapping = tForm.abilities.mapping[Priority.LOW]
-        if (potentialAbilityMapping == null) {
+        if (!hasHidden && potentialAbilityMapping == null) {
             player.sendSystemMessage(Component.translatable(ErrorMessages.noHiddenAbility))
             return InteractionResult.FAIL
         }
 
-        val targetAbilityMapping = tForm.abilities.mapping[if (hasHidden) Priority.LOWEST else Priority.LOW]
+        val priority = if (hasHidden) Priority.LOWEST else Priority.LOW
+        val targetAbilityMapping = tForm.abilities.mapping[priority]
         val potentialAbility = targetAbilityMapping?.get(0) ?: return InteractionResult.FAIL
         val newAbilityBuilder = potentialAbility.template.builder
         val newAbility = newAbilityBuilder.invoke(potentialAbility.template, false)
         newAbility.index = 0
-        newAbility.priority = Priority.LOW
+        newAbility.priority = priority
         pokemon.ability = newAbility
 
         itemStack.count--
