@@ -6,9 +6,7 @@ import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.item.Item
-import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.ComposterBlock
-import net.minecraft.world.level.storage.loot.BuiltInLootTables
 import net.minecraft.world.level.storage.loot.LootPool
 import net.minecraft.world.level.storage.loot.entries.LootTableReference
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent
@@ -27,10 +25,6 @@ import us.timinc.mc.cobblemon.unimplementeditems.items.UnimplementedItemsItems
 object UnimplementedItems {
     const val MOD_ID = "unimplemented_items"
     var config: BaseConfig = BaseConfig.Builder.load()
-
-    val INJECTED_LOOTS = hashSetOf(
-        BuiltInLootTables.FISHING_TREASURE, Blocks.GRASS.lootTable
-    )
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     object UnimplementedItemsMod {
@@ -128,7 +122,7 @@ object UnimplementedItems {
 
         @SubscribeEvent
         fun onLoadLootTable(e: LootTableLoadEvent) {
-            if (!INJECTED_LOOTS.contains(e.name)) {
+            if (!config.lootPoolOverrides.contains(e.name)) {
                 return
             }
 
