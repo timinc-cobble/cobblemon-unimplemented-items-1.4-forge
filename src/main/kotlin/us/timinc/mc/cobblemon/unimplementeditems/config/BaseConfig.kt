@@ -1,6 +1,9 @@
 package us.timinc.mc.cobblemon.unimplementeditems.config
 
 import com.google.gson.GsonBuilder
+import net.minecraft.resources.ResourceLocation
+import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.storage.loot.BuiltInLootTables
 import us.timinc.mc.cobblemon.unimplementeditems.UnimplementedItems
 import java.io.File
 import java.io.FileReader
@@ -8,6 +11,10 @@ import java.io.PrintWriter
 
 class BaseConfig {
     val abilityPatchGen9: Boolean = true
+    val lootPoolOverrides: List<ResourceLocation> = listOf(
+        BuiltInLootTables.FISHING_TREASURE,
+        Blocks.GRASS.lootTable
+    )
 
     class Builder {
         companion object {
